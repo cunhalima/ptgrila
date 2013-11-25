@@ -1,4 +1,4 @@
-##O que ainda ja foi feito:
+##O que ja foi feito:
 
 -introdução:
 	do que se trata o trab, 
@@ -24,7 +24,7 @@
 -definir gramatica de cada token, 
 -constroi automato para cada, 
 -unifica todos num soh, 
--detemrinizacao
+-determinizacao
 ==========================================================================
 ##o que falta fazer: 
 
