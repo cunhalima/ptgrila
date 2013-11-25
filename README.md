@@ -1,32 +1,32 @@
-O que ainda ja foi feito:
+##O que ainda ja foi feito:
 
-introdução:
+-introdução:
 	do que se trata o trab, 
 	delimitacao dele
 
-colocar a gramatica da linguagem
-alfabeto da Linguagem 
-alfabeto da gramatica 
+-colocar a gramatica da linguagem
+-alfabeto da Linguagem 
+-alfabeto da gramatica 
 
-tambem o conjunto de tokens:
+-tambem o conjunto de tokens:
 	os identificadores,
 	cosntatnes
 	simbolos espeiciais
 	palavras reservadas
 
 
-conclusao
+-conclusao
 	considerações finais
 	importancia do  analisador  lexico
 
-projeto e implementacao de um analisador lexico:
-fazer AL usando a tabela como a gente viu (automatos finitos)
-definir gramatica de cada token, 
-constroi automato para cada, 
-unifica todos num soh, 
-detemrinizacao (não fazer classe de equivalencia)
+-projeto e implementacao de um analisador lexico:
+-fazer AL usando a tabela como a gente viu (automatos finitos)
+-definir gramatica de cada token, 
+-constroi automato para cada, 
+-unifica todos num soh, 
+-detemrinizacao
 ==========================================================================
-o que falta fazer: 
+##o que falta fazer: 
 
 	eliminar simbolos inuteis inalcancaveis e improdutivos da tabela grande ( eu acho que  já está OK - dar uma olhada)
 
