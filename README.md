@@ -1,26 +1,32 @@
-ptgrila
-=======
+O que ainda falta fazer:
 
-ptgrila programming language
+introdução:
+	do que se trata o trab, 
+	delimitacao dele
 
-introduçao -> to fazendo :Andrey
+*colocar a gramatica da linguagem
+*alfabeto da Lingaugem
+*alfabeto da gramatica
 
-(colocar a gramatica da linguagem e tambem o conjunto de tokens, alfabeto da Lingaugem e alfabeto da gramatica
-escrever quais sao os identificadores, os cosntatnes, simbolos espeiciais, palavras reservadas) -- feito - Andrey
-
-fazer mini-tutorial de como usar o prog em C
-           - explicar as funçoes
-           
-
-conclusao
+tambem o conjunto de tokens:
+	os identificadores,
+	cosntatnes
+	simbolos espeiciais
+	palavras reservadas
 
 
+*conclusao
+
+projeto e implementacao de um analisador lexico:
 fazer AL usando a tabela como a gente viu (automatos finitos)
+definir gramatica de cada token, 
+constroi automato para cada, 
+unifica todos num soh, 
+detemrinizacao (não fazer classe de equivalencia)
 
-definir gramatica de cada token, constroi automato para cada,
-unifica todos num soh, elimina simbolos inuteis inalcancaveis e detemrinizacao,
-soh nao pode fazer classe de equivalencia (pq senao nao sabe qual eh qual)
+*eliminar simbolos inuteis inalcancaveis e improdutivos da tabela grande ( eu acho que  nao precisa)  
+*algoritmo de mapeamento do automato para reconhecimento lexico.
+*explicar cod fonte
+*tutorial  de funcionamento do programa
 
---> falta terminar a determinização da tabela (remover improdutivos e estados parecidos: a tabela ta muito grande
-,porem fazer isso só se sobrar tempo)
-e algoritmo de mapeamento do automato para reconhecimento lexico.
+OBS: os  itens que tem o "*" são os que ainda faltam ser feitos.
