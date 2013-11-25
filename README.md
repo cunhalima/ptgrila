@@ -5,7 +5,9 @@ introdução:
 	delimitacao dele
 
 *colocar a gramatica da linguagem
+
 *alfabeto da Lingaugem
+
 *alfabeto da gramatica
 
 tambem o conjunto de tokens:
@@ -24,9 +26,12 @@ constroi automato para cada,
 unifica todos num soh, 
 detemrinizacao (não fazer classe de equivalencia)
 
-*eliminar simbolos inuteis inalcancaveis e improdutivos da tabela grande ( eu acho que  nao precisa)  
+*eliminar simbolos inuteis inalcancaveis e improdutivos da tabela grande ( eu acho que  nao precisa) 
+
 *algoritmo de mapeamento do automato para reconhecimento lexico.
+
 *explicar cod fonte
+
 *tutorial  de funcionamento do programa
 
 OBS: os  itens que tem o "*" são os que ainda faltam ser feitos.
