@@ -1,4 +1,5 @@
 bin/ptg
+*.swp
 
 # Object files
 *.o
