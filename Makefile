@@ -1,7 +1,8 @@
 #===========================================================================
 #
 # PTGrila
-# Copyright (C) 2013 Alex Reimann Cunha Lima, Aline Menin.
+# Copyright (C) 2013 Alex Reimann Cunha Lima, Andrey Vinicius Fagundes,
+# Gustavo Henrique Knob, Michel Costa, Ramon Perondi
 #
 # This file is part of the PTGrila
 #
@@ -38,7 +39,7 @@ OBJS=$(MAINTEST) $(MODULES)
 EXE=$(BDIR)/ptg
 TARBALL=trabalho.tar.gz
 
-.PHONY: all clean run val tar
+.PHONY: all clean run val tar test
 
 all: $(EXE)
 
@@ -75,3 +76,6 @@ tar: $(TARBALL)
 $(TARBALL):
 	tar -cvzf $@ README COPYING src doc \
 	Makefile
+
+test: $(EXE)
+	@./$(EXE) < data/infile
