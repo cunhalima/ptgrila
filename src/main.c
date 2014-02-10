@@ -119,30 +119,43 @@ static void showtab(void)
     }
 }
 
+bool deuerro = false;
+
 static const char *doparse(const char *tape)
 {
     int i;
     int state;
+    while(isspace(*tape)) {
+        tape++;
+    }
+    if (*tape == 0) {
+        return NULL;
+    }
     for (state = 0, i = 0; tape[i] != '\0' && !isspace(tape[i]); i++) {
         unsigned char sym = tape[i];
+        //if (sym == '\n' || sym == '\r') {
+        //    sym = ' ';
+        //}
         int col = sym2col[(int)sym];
         //printf("state %d(%d)ffoi %c %d\n", state, states[state], sym, col);
         if (col == 0) {
             //printf("symbol not found\n");
-            printf("%d ", 0);
+            printf("%d ", -1);
+            deuerro = true;
             return NULL;
         }
         col--;
         state = TAB(state, col);
         if (state < 0) {
             //printf("unexpected symbol (%c)\n", sym);
-            printf("%d ", 0);
+            deuerro = true;
+            printf("%d ", -1);
             return NULL;
         }
     }
     printf("%d ", states[state]);
     //printf("State = %d\n", states[state]);
-    return (tape[i] == '\0' || tape[i] == '\n' || tape[i] == '\r') ? NULL : &tape[i + 1];
+    return (tape[i] == '\0') ? NULL : &tape[i + 1];
 }
 
 static void lexparse(const char *tape)
@@ -174,16 +187,45 @@ int main(void)
     final_states = (bool *)malloc(sizeof(bool) * num_states);
     readfile(file, 1);
     readfile(file, 2);
+
+    char *essalinha = NULL;
+    int tamatual = 0;
     //showtab();
-    lineptr = NULL;
-    nread = getline(&lineptr, &n, stdin);
-    if (lineptr != NULL) {
-        //lexparse("SI PUIS SINON PENDANT FAIRE PAIRE ENSEMBLE FLOTTANT LETTRE MAT COPRENDRE PRINCIPALE RETOUR TRUE NALSE $AAA $CBA * / + - = != % < > <= >= : ( ) ^ V //");
-        //lexparse("si i puis sinon pendant faire paire ensemble flottant lettre mat coprendre principale retour true nalse $aaa $cba * / + - = != % < > <= >= : ( ) ^ v //");
-        lexparse(lineptr);
-        free(lineptr);
-        printf("\n");
+    for (;;) {
+        lineptr = NULL;
+        nread = getline(&lineptr, &n, stdin);
+        if (lineptr != NULL) {
+            if (nread <= 0) {
+                free(lineptr);
+                break;
+            }
+            essalinha = realloc(essalinha, tamatual + nread + 1);
+            if (tamatual == 0) {
+                essalinha[0] = 0;
+            }
+            strcat(essalinha, lineptr);
+            tamatual += nread;
+            //lexparse("SI PUIS SINON PENDANT FAIRE PAIRE ENSEMBLE FLOTTANT LETTRE MAT COPRENDRE PRINCIPALE RETOUR TRUE NALSE $AAA $CBA * / + - = != % < > <= >= : ( ) ^ V //");
+            //lexparse("si i puis sinon pendant faire paire ensemble flottant lettre mat coprendre principale retour true nalse $aaa $cba * / + - = != % < > <= >= : ( ) ^ v //");
+            //printf("aaa (%s) %d\n", lineptr, nread);
+            free(lineptr);
+            //fflush(stdout);
+        } else {
+            break;
+        }
+        if (nread == 0) {
+            break;
+        }
     }
+    //printf("%s\n", essalinha);
+    lexparse(essalinha);
+    if (deuerro) {
+        //printf("erro\n");
+    } else {
+        printf("%d ", 0);
+    }
+    printf("\n");
+    free(essalinha);
     //lexparse("SI PUIS");
     fclose(file);
     free(states);

@@ -1,0 +1,2602 @@
+﻿============================================================
+GOLD Parser Builder
+Version 5.2.0.
+============================================================
+
+
+========================================
+Terminals
+========================================
+
+ 0      (EOF)
+ 1      (Error)
+ 2      Whitespace
+ 3      '-10'
+ 4      '-100'
+ 5      '-101'
+ 6      '-102'
+ 7      '-103'
+ 8      '-105'
+ 9      '-106'
+ 10     '-107'
+ 11     '-16'
+ 12     '-20'
+ 13     '-24'
+ 14     '-31'
+ 15     '-38'
+ 16     '-43'
+ 17     '-45'
+ 18     '-6'
+ 19     '-67'
+ 20     '-7'
+ 21     '-70'
+ 22     '-74'
+ 23     '-77'
+ 24     '-78'
+ 25     '-79104'
+ 26     '-80'
+ 27     '-90'
+ 28     '-91'
+ 29     '-93'
+ 30     '-94'
+ 31     '-9597'
+ 32     '-9698'
+ 33     '-99'
+
+
+========================================
+Nonterminals
+========================================
+
+34      <Add_Exp>
+35      <Afirmacao>
+36      <And_Exp>
+37      <Compare_Exp>
+38      <Expression>
+39      <Linhas>
+40      <Mult_Exp>
+41      <Negate_Exp>
+42      <TK_abreparen>
+43      <TK_and>
+44      <TK_comentario>
+45      <TK_diferente>
+46      <TK_div>
+47      <TK_doispontos>
+48      <TK_ensemble>
+49      <TK_faire>
+50      <TK_fechaparen>
+51      <TK_flottant>
+52      <TK_id>
+53      <TK_igual>
+54      <TK_lettre>
+55      <TK_maior>
+56      <TK_maiorigual>
+57      <TK_mais>
+58      <TK_mat>
+59      <TK_menor>
+60      <TK_menorigual>
+61      <TK_menos>
+62      <TK_nalse>
+63      <TK_or>
+64      <TK_paire>
+65      <TK_pendant>
+66      <TK_puis>
+67      <TK_resto>
+68      <TK_retour>
+69      <TK_si>
+70      <TK_sinon>
+71      <TK_true>
+72      <TK_vezes>
+73      <Value>
+
+
+========================================
+Rules
+========================================
+
+0       <TK_si> ::= '-7'
+1       <TK_puis> ::= '-6'
+2       <TK_sinon> ::= '-10'
+3       <TK_pendant> ::= '-16'
+4       <TK_faire> ::= '-20'
+5       <TK_paire> ::= '-24'
+6       <TK_ensemble> ::= '-31'
+7       <TK_flottant> ::= '-38'
+8       <TK_lettre> ::= '-43'
+9       <TK_mat> ::= '-45'
+10      <TK_retour> ::= '-67'
+11      <TK_true> ::= '-70'
+12      <TK_nalse> ::= '-74'
+13      <TK_id> ::= '-77'
+14      <TK_vezes> ::= '-78'
+15      <TK_div> ::= '-79104'
+16      <TK_mais> ::= '-80'
+17      <TK_menos> ::= '-90'
+18      <TK_igual> ::= '-91'
+19      <TK_diferente> ::= '-93'
+20      <TK_resto> ::= '-94'
+21      <TK_menor> ::= '-9597'
+22      <TK_maior> ::= '-9698'
+23      <TK_doispontos> ::= '-99'
+24      <TK_abreparen> ::= '-100'
+25      <TK_fechaparen> ::= '-101'
+26      <TK_and> ::= '-102'
+27      <TK_or> ::= '-103'
+28      <TK_comentario> ::= '-105'
+29      <TK_menorigual> ::= '-106'
+30      <TK_maiorigual> ::= '-107'
+31      <Linhas> ::= <Afirmacao> <TK_comentario> <Linhas>
+32      <Linhas> ::= <Afirmacao> <TK_comentario>
+33      <Afirmacao> ::= <TK_id> <TK_doispontos> <Expression>
+34      <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire>
+35      <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>
+36      <Afirmacao> ::= <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire>
+37      <Afirmacao> ::= <TK_ensemble> <TK_id>
+38      <Afirmacao> ::= <TK_flottant> <TK_id>
+39      <Afirmacao> ::= <TK_lettre> <TK_id>
+40      <Afirmacao> ::= <TK_mat> <TK_id>
+41      <Afirmacao> ::= <TK_retour>
+42      <Afirmacao> ::= <TK_retour> <Expression>
+43      <Expression> ::= <And_Exp> <TK_or> <Expression>
+44      <Expression> ::= <And_Exp>
+45      <And_Exp> ::= <Compare_Exp> <TK_and> <And_Exp>
+46      <And_Exp> ::= <Compare_Exp>
+47      <Compare_Exp> ::= <Add_Exp> <TK_igual> <Compare_Exp>
+48      <Compare_Exp> ::= <Add_Exp> <TK_diferente> <Compare_Exp>
+49      <Compare_Exp> ::= <Add_Exp> <TK_maior> <Compare_Exp>
+50      <Compare_Exp> ::= <Add_Exp> <TK_maiorigual> <Compare_Exp>
+51      <Compare_Exp> ::= <Add_Exp> <TK_menor> <Compare_Exp>
+52      <Compare_Exp> ::= <Add_Exp> <TK_menorigual> <Compare_Exp>
+53      <Compare_Exp> ::= <Add_Exp>
+54      <Add_Exp> ::= <Mult_Exp> <TK_mais> <Add_Exp>
+55      <Add_Exp> ::= <Mult_Exp> <TK_menos> <Add_Exp>
+56      <Add_Exp> ::= <Mult_Exp>
+57      <Mult_Exp> ::= <Negate_Exp> <TK_vezes> <Mult_Exp>
+58      <Mult_Exp> ::= <Negate_Exp> <TK_div> <Mult_Exp>
+59      <Mult_Exp> ::= <Negate_Exp> <TK_resto> <Mult_Exp>
+60      <Mult_Exp> ::= <Negate_Exp>
+61      <Negate_Exp> ::= <TK_menos> <Value>
+62      <Negate_Exp> ::= <Value>
+63      <Value> ::= <TK_abreparen> <Expression> <TK_fechaparen>
+64      <Value> ::= <TK_id>
+65      <Value> ::= <TK_true>
+66      <Value> ::= <TK_nalse>
+
+
+========================================
+DFA States
+========================================
+
+State 0
+        Goto 1       &09 .. &0D, &20, &85, &A0, &1680, &180E, &2000 .. &200A, &2026, &2028, &2029, &202F, &205F, &3000
+        Goto 2       -
+
+
+State 1
+        Goto 1       &09 .. &0D, &20, &85, &A0, &1680, &180E, &2000 .. &200A, &2026, &2028, &2029, &202F, &205F, &3000
+        Accept Whitespace
+
+
+State 2
+        Goto 3       8
+        Goto 5       1
+        Goto 15      2
+        Goto 18      3
+        Goto 21      4
+        Goto 24      6
+        Goto 26      7
+        Goto 35      9
+
+
+State 3
+        Goto 4       0
+
+
+State 4
+        Accept '-80'
+
+
+State 5
+        Goto 6       6
+        Goto 7       0
+
+
+State 6
+        Accept '-16'
+
+
+State 7
+        Goto 8       0
+        Goto 9       1
+        Goto 10      2
+        Goto 11      3
+        Goto 12      5
+        Goto 13      6
+        Goto 14      7
+        Accept '-10'
+
+
+State 8
+        Accept '-100'
+
+
+State 9
+        Accept '-101'
+
+
+State 10
+        Accept '-102'
+
+
+State 11
+        Accept '-103'
+
+
+State 12
+        Accept '-105'
+
+
+State 13
+        Accept '-106'
+
+
+State 14
+        Accept '-107'
+
+
+State 15
+        Goto 16      0
+        Goto 17      4
+
+
+State 16
+        Accept '-20'
+
+
+State 17
+        Accept '-24'
+
+
+State 18
+        Goto 19      1
+        Goto 20      8
+
+
+State 19
+        Accept '-31'
+
+
+State 20
+        Accept '-38'
+
+
+State 21
+        Goto 22      3
+        Goto 23      5
+
+
+State 22
+        Accept '-43'
+
+
+State 23
+        Accept '-45'
+
+
+State 24
+        Goto 25      7
+        Accept '-6'
+
+
+State 25
+        Accept '-67'
+
+
+State 26
+        Goto 27      0
+        Goto 28      4
+        Goto 29      7
+        Goto 30      8
+        Goto 31      9
+        Accept '-7'
+
+
+State 27
+        Accept '-70'
+
+
+State 28
+        Accept '-74'
+
+
+State 29
+        Accept '-77'
+
+
+State 30
+        Accept '-78'
+
+
+State 31
+        Goto 32      1
+
+
+State 32
+        Goto 33      0
+
+
+State 33
+        Goto 34      4
+
+
+State 34
+        Accept '-79104'
+
+
+State 35
+        Goto 36      0
+        Goto 37      1
+        Goto 38      3
+        Goto 39      4
+        Goto 40      5
+        Goto 43      6
+        Goto 46      9
+
+
+State 36
+        Accept '-90'
+
+
+State 37
+        Accept '-91'
+
+
+State 38
+        Accept '-93'
+
+
+State 39
+        Accept '-94'
+
+
+State 40
+        Goto 41      9
+
+
+State 41
+        Goto 42      7
+
+
+State 42
+        Accept '-9597'
+
+
+State 43
+        Goto 44      9
+
+
+State 44
+        Goto 45      8
+
+
+State 45
+        Accept '-9698'
+
+
+State 46
+        Accept '-99'
+
+
+
+
+========================================
+LALR States
+========================================
+
+State 0
+        <S'> ::= _ <Linhas> (EOF)                                                                       <S'> ::= ^ <Linhas> (EOF)
+        <TK_si> ::= _ '-7'                                                                              <TK_si> ::= ^ '-7'
+        <TK_pendant> ::= _ '-16'                                                                        <TK_pendant> ::= ^ '-16'
+        <TK_ensemble> ::= _ '-31'                                                                       <TK_ensemble> ::= ^ '-31'
+        <TK_flottant> ::= _ '-38'                                                                       <TK_flottant> ::= ^ '-38'
+        <TK_lettre> ::= _ '-43'                                                                         <TK_lettre> ::= ^ '-43'
+        <TK_mat> ::= _ '-45'                                                                            <TK_mat> ::= ^ '-45'
+        <TK_retour> ::= _ '-67'                                                                         <TK_retour> ::= ^ '-67'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <Linhas> ::= _ <Afirmacao> <TK_comentario> <Linhas>                                             <Linhas> ::= ^ <Afirmacao> <TK_comentario> <Linhas>
+        <Linhas> ::= _ <Afirmacao> <TK_comentario>                                                      <Linhas> ::= ^ <Afirmacao> <TK_comentario>
+        <Afirmacao> ::= _ <TK_id> <TK_doispontos> <Expression>                                          <Afirmacao> ::= ^ <TK_id> <TK_doispontos> <Expression>
+        <Afirmacao> ::= _ <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire>                            <Afirmacao> ::= ^ <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>        <Afirmacao> ::= ^ <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire>                      <Afirmacao> ::= ^ <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_ensemble> <TK_id>                                                         <Afirmacao> ::= ^ <TK_ensemble> <TK_id>
+        <Afirmacao> ::= _ <TK_flottant> <TK_id>                                                         <Afirmacao> ::= ^ <TK_flottant> <TK_id>
+        <Afirmacao> ::= _ <TK_lettre> <TK_id>                                                           <Afirmacao> ::= ^ <TK_lettre> <TK_id>
+        <Afirmacao> ::= _ <TK_mat> <TK_id>                                                              <Afirmacao> ::= ^ <TK_mat> <TK_id>
+        <Afirmacao> ::= _ <TK_retour>                                                                   <Afirmacao> ::= ^ <TK_retour>
+        <Afirmacao> ::= _ <TK_retour> <Expression>                                                      <Afirmacao> ::= ^ <TK_retour> <Expression>
+
+        '-16' s 1
+        '-31' s 2
+        '-38' s 3
+        '-43' s 4
+        '-45' s 5
+        '-67' s 6
+        '-7' s 7
+        '-77' s 8
+        <Afirmacao> g 9
+        <Linhas> g 10
+        <TK_ensemble> g 11
+        <TK_flottant> g 12
+        <TK_id> g 13
+        <TK_lettre> g 14
+        <TK_mat> g 15
+        <TK_pendant> g 16
+        <TK_retour> g 17
+        <TK_si> g 18
+
+
+State 1
+        Prior States: 0, 20, 64, 77, 99
+
+        <TK_pendant> ::= '-16' _                                                                        <TK_pendant> ::= '-16' ^
+
+        '-100' r 3
+        '-70' r 3
+        '-74' r 3
+        '-77' r 3
+        '-90' r 3
+
+
+State 2
+        Prior States: 0, 20, 64, 77, 99
+
+        <TK_ensemble> ::= '-31' _                                                                       <TK_ensemble> ::= '-31' ^
+
+        '-77' r 6
+
+
+State 3
+        Prior States: 0, 20, 64, 77, 99
+
+        <TK_flottant> ::= '-38' _                                                                       <TK_flottant> ::= '-38' ^
+
+        '-77' r 7
+
+
+State 4
+        Prior States: 0, 20, 64, 77, 99
+
+        <TK_lettre> ::= '-43' _                                                                         <TK_lettre> ::= '-43' ^
+
+        '-77' r 8
+
+
+State 5
+        Prior States: 0, 20, 64, 77, 99
+
+        <TK_mat> ::= '-45' _                                                                            <TK_mat> ::= '-45' ^
+
+        '-77' r 9
+
+
+State 6
+        Prior States: 0, 20, 64, 77, 99
+
+        <TK_retour> ::= '-67' _                                                                         <TK_retour> ::= '-67' ^
+
+        '-100' r 10
+        '-105' r 10
+        '-70' r 10
+        '-74' r 10
+        '-77' r 10
+        '-90' r 10
+
+
+State 7
+        Prior States: 0, 20, 64, 77, 99
+
+        <TK_si> ::= '-7' _                                                                              <TK_si> ::= '-7' ^
+
+        '-100' r 0
+        '-70' r 0
+        '-74' r 0
+        '-77' r 0
+        '-90' r 0
+
+
+State 8
+        Prior States: 0, 11, 12, 14, 15, 16, 17, 18, 20, 24, 37, 39, 53, 54, 55, 56, 57, 58, 60, 62, 64, 66, 67, 71, 72, 73, 77, 99
+
+        <TK_id> ::= '-77' _                                                                             <TK_id> ::= '-77' ^
+
+        '-101' r 13
+        '-102' r 13
+        '-103' r 13
+        '-105' r 13
+        '-106' r 13
+        '-107' r 13
+        '-20' r 13
+        '-6' r 13
+        '-78' r 13
+        '-79104' r 13
+        '-80' r 13
+        '-90' r 13
+        '-91' r 13
+        '-93' r 13
+        '-94' r 13
+        '-9597' r 13
+        '-9698' r 13
+        '-99' r 13
+
+
+State 9
+        Prior States: 0, 20, 64, 77, 99
+
+        <Linhas> ::= <Afirmacao> _ <TK_comentario> <Linhas>                                             <Linhas> ::= <Afirmacao> ^ <TK_comentario> <Linhas>
+        <Linhas> ::= <Afirmacao> _ <TK_comentario>                                                      <Linhas> ::= <Afirmacao> ^ <TK_comentario>
+        <TK_comentario> ::= _ '-105'                                                                    <TK_comentario> ::= ^ '-105'
+
+        '-105' s 19
+        <TK_comentario> g 20
+
+
+State 10
+        Prior States: 0
+
+        <S'> ::= <Linhas> _ (EOF)                                                                       <S'> ::= <Linhas> ^ (EOF)
+
+        (EOF) a
+
+
+State 11
+        Prior States: 0, 20, 64, 77, 99
+
+        <Afirmacao> ::= <TK_ensemble> _ <TK_id>                                                         <Afirmacao> ::= <TK_ensemble> ^ <TK_id>
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+
+        '-77' s 8
+        <TK_id> g 21
+
+
+State 12
+        Prior States: 0, 20, 64, 77, 99
+
+        <Afirmacao> ::= <TK_flottant> _ <TK_id>                                                         <Afirmacao> ::= <TK_flottant> ^ <TK_id>
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+
+        '-77' s 8
+        <TK_id> g 22
+
+
+State 13
+        Prior States: 0, 20, 64, 77, 99
+
+        <Afirmacao> ::= <TK_id> _ <TK_doispontos> <Expression>                                          <Afirmacao> ::= <TK_id> ^ <TK_doispontos> <Expression>
+        <TK_doispontos> ::= _ '-99'                                                                     <TK_doispontos> ::= ^ '-99'
+
+        '-99' s 23
+        <TK_doispontos> g 24
+
+
+State 14
+        Prior States: 0, 20, 64, 77, 99
+
+        <Afirmacao> ::= <TK_lettre> _ <TK_id>                                                           <Afirmacao> ::= <TK_lettre> ^ <TK_id>
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+
+        '-77' s 8
+        <TK_id> g 25
+
+
+State 15
+        Prior States: 0, 20, 64, 77, 99
+
+        <Afirmacao> ::= <TK_mat> _ <TK_id>                                                              <Afirmacao> ::= <TK_mat> ^ <TK_id>
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+
+        '-77' s 8
+        <TK_id> g 26
+
+
+State 16
+        Prior States: 0, 20, 64, 77, 99
+
+        <Afirmacao> ::= <TK_pendant> _ <Expression> <TK_faire> <Linhas> <TK_paire>                      <Afirmacao> ::= <TK_pendant> ^ <Expression> <TK_faire> <Linhas> <TK_paire>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Expression> ::= _ <And_Exp> <TK_or> <Expression>                                               <Expression> ::= ^ <And_Exp> <TK_or> <Expression>
+        <Expression> ::= _ <And_Exp>                                                                    <Expression> ::= ^ <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp> <TK_and> <And_Exp>                                                <And_Exp> ::= ^ <Compare_Exp> <TK_and> <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp>                                                                   <And_Exp> ::= ^ <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <And_Exp> g 32
+        <Compare_Exp> g 33
+        <Expression> g 34
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 17
+        Prior States: 0, 20, 64, 77, 99
+
+        <Afirmacao> ::= <TK_retour> _                                                                   <Afirmacao> ::= <TK_retour> ^
+        <Afirmacao> ::= <TK_retour> _ <Expression>                                                      <Afirmacao> ::= <TK_retour> ^ <Expression>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Expression> ::= _ <And_Exp> <TK_or> <Expression>                                               <Expression> ::= ^ <And_Exp> <TK_or> <Expression>
+        <Expression> ::= _ <And_Exp>                                                                    <Expression> ::= ^ <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp> <TK_and> <And_Exp>                                                <And_Exp> ::= ^ <Compare_Exp> <TK_and> <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp>                                                                   <And_Exp> ::= ^ <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <And_Exp> g 32
+        <Compare_Exp> g 33
+        <Expression> g 43
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+        '-105' r 41
+
+
+State 18
+        Prior States: 0, 20, 64, 77, 99
+
+        <Afirmacao> ::= <TK_si> _ <Expression> <TK_puis> <Linhas> <TK_paire>                            <Afirmacao> ::= <TK_si> ^ <Expression> <TK_puis> <Linhas> <TK_paire>
+        <Afirmacao> ::= <TK_si> _ <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>        <Afirmacao> ::= <TK_si> ^ <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Expression> ::= _ <And_Exp> <TK_or> <Expression>                                               <Expression> ::= ^ <And_Exp> <TK_or> <Expression>
+        <Expression> ::= _ <And_Exp>                                                                    <Expression> ::= ^ <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp> <TK_and> <And_Exp>                                                <And_Exp> ::= ^ <Compare_Exp> <TK_and> <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp>                                                                   <And_Exp> ::= ^ <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <And_Exp> g 32
+        <Compare_Exp> g 33
+        <Expression> g 44
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 19
+        Prior States: 9
+
+        <TK_comentario> ::= '-105' _                                                                    <TK_comentario> ::= '-105' ^
+
+        (EOF) r 28
+        '-10' r 28
+        '-16' r 28
+        '-24' r 28
+        '-31' r 28
+        '-38' r 28
+        '-43' r 28
+        '-45' r 28
+        '-67' r 28
+        '-7' r 28
+        '-77' r 28
+
+
+State 20
+        Prior States: 9
+
+        <Linhas> ::= <Afirmacao> <TK_comentario> _ <Linhas>                                             <Linhas> ::= <Afirmacao> <TK_comentario> ^ <Linhas>
+        <Linhas> ::= <Afirmacao> <TK_comentario> _                                                      <Linhas> ::= <Afirmacao> <TK_comentario> ^
+        <TK_si> ::= _ '-7'                                                                              <TK_si> ::= ^ '-7'
+        <TK_pendant> ::= _ '-16'                                                                        <TK_pendant> ::= ^ '-16'
+        <TK_ensemble> ::= _ '-31'                                                                       <TK_ensemble> ::= ^ '-31'
+        <TK_flottant> ::= _ '-38'                                                                       <TK_flottant> ::= ^ '-38'
+        <TK_lettre> ::= _ '-43'                                                                         <TK_lettre> ::= ^ '-43'
+        <TK_mat> ::= _ '-45'                                                                            <TK_mat> ::= ^ '-45'
+        <TK_retour> ::= _ '-67'                                                                         <TK_retour> ::= ^ '-67'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <Linhas> ::= _ <Afirmacao> <TK_comentario> <Linhas>                                             <Linhas> ::= ^ <Afirmacao> <TK_comentario> <Linhas>
+        <Linhas> ::= _ <Afirmacao> <TK_comentario>                                                      <Linhas> ::= ^ <Afirmacao> <TK_comentario>
+        <Afirmacao> ::= _ <TK_id> <TK_doispontos> <Expression>                                          <Afirmacao> ::= ^ <TK_id> <TK_doispontos> <Expression>
+        <Afirmacao> ::= _ <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire>                            <Afirmacao> ::= ^ <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>        <Afirmacao> ::= ^ <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire>                      <Afirmacao> ::= ^ <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_ensemble> <TK_id>                                                         <Afirmacao> ::= ^ <TK_ensemble> <TK_id>
+        <Afirmacao> ::= _ <TK_flottant> <TK_id>                                                         <Afirmacao> ::= ^ <TK_flottant> <TK_id>
+        <Afirmacao> ::= _ <TK_lettre> <TK_id>                                                           <Afirmacao> ::= ^ <TK_lettre> <TK_id>
+        <Afirmacao> ::= _ <TK_mat> <TK_id>                                                              <Afirmacao> ::= ^ <TK_mat> <TK_id>
+        <Afirmacao> ::= _ <TK_retour>                                                                   <Afirmacao> ::= ^ <TK_retour>
+        <Afirmacao> ::= _ <TK_retour> <Expression>                                                      <Afirmacao> ::= ^ <TK_retour> <Expression>
+
+        '-16' s 1
+        '-31' s 2
+        '-38' s 3
+        '-43' s 4
+        '-45' s 5
+        '-67' s 6
+        '-7' s 7
+        '-77' s 8
+        <Afirmacao> g 9
+        <Linhas> g 45
+        <TK_ensemble> g 11
+        <TK_flottant> g 12
+        <TK_id> g 13
+        <TK_lettre> g 14
+        <TK_mat> g 15
+        <TK_pendant> g 16
+        <TK_retour> g 17
+        <TK_si> g 18
+        (EOF) r 32
+        '-10' r 32
+        '-24' r 32
+
+
+State 21
+        Prior States: 11
+
+        <Afirmacao> ::= <TK_ensemble> <TK_id> _                                                         <Afirmacao> ::= <TK_ensemble> <TK_id> ^
+
+        '-105' r 37
+
+
+State 22
+        Prior States: 12
+
+        <Afirmacao> ::= <TK_flottant> <TK_id> _                                                         <Afirmacao> ::= <TK_flottant> <TK_id> ^
+
+        '-105' r 38
+
+
+State 23
+        Prior States: 13
+
+        <TK_doispontos> ::= '-99' _                                                                     <TK_doispontos> ::= '-99' ^
+
+        '-100' r 23
+        '-70' r 23
+        '-74' r 23
+        '-77' r 23
+        '-90' r 23
+
+
+State 24
+        Prior States: 13
+
+        <Afirmacao> ::= <TK_id> <TK_doispontos> _ <Expression>                                          <Afirmacao> ::= <TK_id> <TK_doispontos> ^ <Expression>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Expression> ::= _ <And_Exp> <TK_or> <Expression>                                               <Expression> ::= ^ <And_Exp> <TK_or> <Expression>
+        <Expression> ::= _ <And_Exp>                                                                    <Expression> ::= ^ <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp> <TK_and> <And_Exp>                                                <And_Exp> ::= ^ <Compare_Exp> <TK_and> <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp>                                                                   <And_Exp> ::= ^ <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <And_Exp> g 32
+        <Compare_Exp> g 33
+        <Expression> g 46
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 25
+        Prior States: 14
+
+        <Afirmacao> ::= <TK_lettre> <TK_id> _                                                           <Afirmacao> ::= <TK_lettre> <TK_id> ^
+
+        '-105' r 39
+
+
+State 26
+        Prior States: 15
+
+        <Afirmacao> ::= <TK_mat> <TK_id> _                                                              <Afirmacao> ::= <TK_mat> <TK_id> ^
+
+        '-105' r 40
+
+
+State 27
+        Prior States: 16, 17, 18, 24, 37, 39, 53, 54, 55, 56, 57, 58, 60, 62, 66, 67, 71, 72, 73
+
+        <TK_abreparen> ::= '-100' _                                                                     <TK_abreparen> ::= '-100' ^
+
+        '-100' r 24
+        '-70' r 24
+        '-74' r 24
+        '-77' r 24
+        '-90' r 24
+
+
+State 28
+        Prior States: 16, 17, 18, 24, 37, 39, 53, 54, 55, 56, 57, 58, 60, 62, 66, 67, 71, 72, 73
+
+        <TK_true> ::= '-70' _                                                                           <TK_true> ::= '-70' ^
+
+        '-101' r 11
+        '-102' r 11
+        '-103' r 11
+        '-105' r 11
+        '-106' r 11
+        '-107' r 11
+        '-20' r 11
+        '-6' r 11
+        '-78' r 11
+        '-79104' r 11
+        '-80' r 11
+        '-90' r 11
+        '-91' r 11
+        '-93' r 11
+        '-94' r 11
+        '-9597' r 11
+        '-9698' r 11
+
+
+State 29
+        Prior States: 16, 17, 18, 24, 37, 39, 53, 54, 55, 56, 57, 58, 60, 62, 66, 67, 71, 72, 73
+
+        <TK_nalse> ::= '-74' _                                                                          <TK_nalse> ::= '-74' ^
+
+        '-101' r 12
+        '-102' r 12
+        '-103' r 12
+        '-105' r 12
+        '-106' r 12
+        '-107' r 12
+        '-20' r 12
+        '-6' r 12
+        '-78' r 12
+        '-79104' r 12
+        '-80' r 12
+        '-90' r 12
+        '-91' r 12
+        '-93' r 12
+        '-94' r 12
+        '-9597' r 12
+        '-9698' r 12
+
+
+State 30
+        Prior States: 16, 17, 18, 24, 35, 37, 53, 54, 55, 56, 57, 58, 60, 62, 66, 67, 71, 72, 73
+
+        <TK_menos> ::= '-90' _                                                                          <TK_menos> ::= '-90' ^
+
+        '-100' r 17
+        '-70' r 17
+        '-74' r 17
+        '-77' r 17
+        '-90' r 17
+
+
+State 31
+        Prior States: 16, 17, 18, 24, 37, 53, 54, 55, 56, 57, 58, 60, 62
+
+        <Compare_Exp> ::= <Add_Exp> _ <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= <Add_Exp> ^ <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= <Add_Exp> _ <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= <Add_Exp> ^ <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= <Add_Exp> _ <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= <Add_Exp> ^ <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= <Add_Exp> _ <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= <Add_Exp> ^ <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= <Add_Exp> _ <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= <Add_Exp> ^ <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= <Add_Exp> _ <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= <Add_Exp> ^ <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= <Add_Exp> _                                                                   <Compare_Exp> ::= <Add_Exp> ^
+        <TK_igual> ::= _ '-91'                                                                          <TK_igual> ::= ^ '-91'
+        <TK_diferente> ::= _ '-93'                                                                      <TK_diferente> ::= ^ '-93'
+        <TK_menor> ::= _ '-9597'                                                                        <TK_menor> ::= ^ '-9597'
+        <TK_maior> ::= _ '-9698'                                                                        <TK_maior> ::= ^ '-9698'
+        <TK_menorigual> ::= _ '-106'                                                                    <TK_menorigual> ::= ^ '-106'
+        <TK_maiorigual> ::= _ '-107'                                                                    <TK_maiorigual> ::= ^ '-107'
+
+        '-106' s 47
+        '-107' s 48
+        '-91' s 49
+        '-93' s 50
+        '-9597' s 51
+        '-9698' s 52
+        <TK_diferente> g 53
+        <TK_igual> g 54
+        <TK_maior> g 55
+        <TK_maiorigual> g 56
+        <TK_menor> g 57
+        <TK_menorigual> g 58
+        '-101' r 53
+        '-102' r 53
+        '-103' r 53
+        '-105' r 53
+        '-20' r 53
+        '-6' r 53
+
+
+State 32
+        Prior States: 16, 17, 18, 24, 37, 60
+
+        <Expression> ::= <And_Exp> _ <TK_or> <Expression>                                               <Expression> ::= <And_Exp> ^ <TK_or> <Expression>
+        <Expression> ::= <And_Exp> _                                                                    <Expression> ::= <And_Exp> ^
+        <TK_or> ::= _ '-103'                                                                            <TK_or> ::= ^ '-103'
+
+        '-103' s 59
+        <TK_or> g 60
+        '-101' r 44
+        '-105' r 44
+        '-20' r 44
+        '-6' r 44
+
+
+State 33
+        Prior States: 16, 17, 18, 24, 37, 60, 62
+
+        <And_Exp> ::= <Compare_Exp> _ <TK_and> <And_Exp>                                                <And_Exp> ::= <Compare_Exp> ^ <TK_and> <And_Exp>
+        <And_Exp> ::= <Compare_Exp> _                                                                   <And_Exp> ::= <Compare_Exp> ^
+        <TK_and> ::= _ '-102'                                                                           <TK_and> ::= ^ '-102'
+
+        '-102' s 61
+        <TK_and> g 62
+        '-101' r 46
+        '-103' r 46
+        '-105' r 46
+        '-20' r 46
+        '-6' r 46
+
+
+State 34
+        Prior States: 16
+
+        <Afirmacao> ::= <TK_pendant> <Expression> _ <TK_faire> <Linhas> <TK_paire>                      <Afirmacao> ::= <TK_pendant> <Expression> ^ <TK_faire> <Linhas> <TK_paire>
+        <TK_faire> ::= _ '-20'                                                                          <TK_faire> ::= ^ '-20'
+
+        '-20' s 63
+        <TK_faire> g 64
+
+
+State 35
+        Prior States: 16, 17, 18, 24, 37, 53, 54, 55, 56, 57, 58, 60, 62, 66, 67
+
+        <Add_Exp> ::= <Mult_Exp> _ <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= <Mult_Exp> ^ <TK_mais> <Add_Exp>
+        <Add_Exp> ::= <Mult_Exp> _ <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= <Mult_Exp> ^ <TK_menos> <Add_Exp>
+        <Add_Exp> ::= <Mult_Exp> _                                                                      <Add_Exp> ::= <Mult_Exp> ^
+        <TK_mais> ::= _ '-80'                                                                           <TK_mais> ::= ^ '-80'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+
+        '-80' s 65
+        '-90' s 30
+        <TK_mais> g 66
+        <TK_menos> g 67
+        '-101' r 56
+        '-102' r 56
+        '-103' r 56
+        '-105' r 56
+        '-106' r 56
+        '-107' r 56
+        '-20' r 56
+        '-6' r 56
+        '-91' r 56
+        '-93' r 56
+        '-9597' r 56
+        '-9698' r 56
+
+
+State 36
+        Prior States: 16, 17, 18, 24, 37, 53, 54, 55, 56, 57, 58, 60, 62, 66, 67, 71, 72, 73
+
+        <Mult_Exp> ::= <Negate_Exp> _ <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= <Negate_Exp> ^ <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= <Negate_Exp> _ <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= <Negate_Exp> ^ <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= <Negate_Exp> _ <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= <Negate_Exp> ^ <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= <Negate_Exp> _                                                                   <Mult_Exp> ::= <Negate_Exp> ^
+        <TK_vezes> ::= _ '-78'                                                                          <TK_vezes> ::= ^ '-78'
+        <TK_div> ::= _ '-79104'                                                                         <TK_div> ::= ^ '-79104'
+        <TK_resto> ::= _ '-94'                                                                          <TK_resto> ::= ^ '-94'
+
+        '-78' s 68
+        '-79104' s 69
+        '-94' s 70
+        <TK_div> g 71
+        <TK_resto> g 72
+        <TK_vezes> g 73
+        '-101' r 60
+        '-102' r 60
+        '-103' r 60
+        '-105' r 60
+        '-106' r 60
+        '-107' r 60
+        '-20' r 60
+        '-6' r 60
+        '-80' r 60
+        '-90' r 60
+        '-91' r 60
+        '-93' r 60
+        '-9597' r 60
+        '-9698' r 60
+
+
+State 37
+        Prior States: 16, 17, 18, 24, 37, 39, 53, 54, 55, 56, 57, 58, 60, 62, 66, 67, 71, 72, 73
+
+        <Value> ::= <TK_abreparen> _ <Expression> <TK_fechaparen>                                       <Value> ::= <TK_abreparen> ^ <Expression> <TK_fechaparen>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Expression> ::= _ <And_Exp> <TK_or> <Expression>                                               <Expression> ::= ^ <And_Exp> <TK_or> <Expression>
+        <Expression> ::= _ <And_Exp>                                                                    <Expression> ::= ^ <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp> <TK_and> <And_Exp>                                                <And_Exp> ::= ^ <Compare_Exp> <TK_and> <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp>                                                                   <And_Exp> ::= ^ <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <And_Exp> g 32
+        <Compare_Exp> g 33
+        <Expression> g 74
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 38
+        Prior States: 16, 17, 18, 24, 37, 39, 53, 54, 55, 56, 57, 58, 60, 62, 66, 67, 71, 72, 73
+
+        <Value> ::= <TK_id> _                                                                           <Value> ::= <TK_id> ^
+
+        '-101' r 64
+        '-102' r 64
+        '-103' r 64
+        '-105' r 64
+        '-106' r 64
+        '-107' r 64
+        '-20' r 64
+        '-6' r 64
+        '-78' r 64
+        '-79104' r 64
+        '-80' r 64
+        '-90' r 64
+        '-91' r 64
+        '-93' r 64
+        '-94' r 64
+        '-9597' r 64
+        '-9698' r 64
+
+
+State 39
+        Prior States: 16, 17, 18, 24, 37, 53, 54, 55, 56, 57, 58, 60, 62, 66, 67, 71, 72, 73
+
+        <Negate_Exp> ::= <TK_menos> _ <Value>                                                           <Negate_Exp> ::= <TK_menos> ^ <Value>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 75
+
+
+State 40
+        Prior States: 16, 17, 18, 24, 37, 39, 53, 54, 55, 56, 57, 58, 60, 62, 66, 67, 71, 72, 73
+
+        <Value> ::= <TK_nalse> _                                                                        <Value> ::= <TK_nalse> ^
+
+        '-101' r 66
+        '-102' r 66
+        '-103' r 66
+        '-105' r 66
+        '-106' r 66
+        '-107' r 66
+        '-20' r 66
+        '-6' r 66
+        '-78' r 66
+        '-79104' r 66
+        '-80' r 66
+        '-90' r 66
+        '-91' r 66
+        '-93' r 66
+        '-94' r 66
+        '-9597' r 66
+        '-9698' r 66
+
+
+State 41
+        Prior States: 16, 17, 18, 24, 37, 39, 53, 54, 55, 56, 57, 58, 60, 62, 66, 67, 71, 72, 73
+
+        <Value> ::= <TK_true> _                                                                         <Value> ::= <TK_true> ^
+
+        '-101' r 65
+        '-102' r 65
+        '-103' r 65
+        '-105' r 65
+        '-106' r 65
+        '-107' r 65
+        '-20' r 65
+        '-6' r 65
+        '-78' r 65
+        '-79104' r 65
+        '-80' r 65
+        '-90' r 65
+        '-91' r 65
+        '-93' r 65
+        '-94' r 65
+        '-9597' r 65
+        '-9698' r 65
+
+
+State 42
+        Prior States: 16, 17, 18, 24, 37, 53, 54, 55, 56, 57, 58, 60, 62, 66, 67, 71, 72, 73
+
+        <Negate_Exp> ::= <Value> _                                                                      <Negate_Exp> ::= <Value> ^
+
+        '-101' r 62
+        '-102' r 62
+        '-103' r 62
+        '-105' r 62
+        '-106' r 62
+        '-107' r 62
+        '-20' r 62
+        '-6' r 62
+        '-78' r 62
+        '-79104' r 62
+        '-80' r 62
+        '-90' r 62
+        '-91' r 62
+        '-93' r 62
+        '-94' r 62
+        '-9597' r 62
+        '-9698' r 62
+
+
+State 43
+        Prior States: 17
+
+        <Afirmacao> ::= <TK_retour> <Expression> _                                                      <Afirmacao> ::= <TK_retour> <Expression> ^
+
+        '-105' r 42
+
+
+State 44
+        Prior States: 18
+
+        <Afirmacao> ::= <TK_si> <Expression> _ <TK_puis> <Linhas> <TK_paire>                            <Afirmacao> ::= <TK_si> <Expression> ^ <TK_puis> <Linhas> <TK_paire>
+        <Afirmacao> ::= <TK_si> <Expression> _ <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>        <Afirmacao> ::= <TK_si> <Expression> ^ <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>
+        <TK_puis> ::= _ '-6'                                                                            <TK_puis> ::= ^ '-6'
+
+        '-6' s 76
+        <TK_puis> g 77
+
+
+State 45
+        Prior States: 20
+
+        <Linhas> ::= <Afirmacao> <TK_comentario> <Linhas> _                                             <Linhas> ::= <Afirmacao> <TK_comentario> <Linhas> ^
+
+        (EOF) r 31
+        '-10' r 31
+        '-24' r 31
+
+
+State 46
+        Prior States: 24
+
+        <Afirmacao> ::= <TK_id> <TK_doispontos> <Expression> _                                          <Afirmacao> ::= <TK_id> <TK_doispontos> <Expression> ^
+
+        '-105' r 33
+
+
+State 47
+        Prior States: 31
+
+        <TK_menorigual> ::= '-106' _                                                                    <TK_menorigual> ::= '-106' ^
+
+        '-100' r 29
+        '-70' r 29
+        '-74' r 29
+        '-77' r 29
+        '-90' r 29
+
+
+State 48
+        Prior States: 31
+
+        <TK_maiorigual> ::= '-107' _                                                                    <TK_maiorigual> ::= '-107' ^
+
+        '-100' r 30
+        '-70' r 30
+        '-74' r 30
+        '-77' r 30
+        '-90' r 30
+
+
+State 49
+        Prior States: 31
+
+        <TK_igual> ::= '-91' _                                                                          <TK_igual> ::= '-91' ^
+
+        '-100' r 18
+        '-70' r 18
+        '-74' r 18
+        '-77' r 18
+        '-90' r 18
+
+
+State 50
+        Prior States: 31
+
+        <TK_diferente> ::= '-93' _                                                                      <TK_diferente> ::= '-93' ^
+
+        '-100' r 19
+        '-70' r 19
+        '-74' r 19
+        '-77' r 19
+        '-90' r 19
+
+
+State 51
+        Prior States: 31
+
+        <TK_menor> ::= '-9597' _                                                                        <TK_menor> ::= '-9597' ^
+
+        '-100' r 21
+        '-70' r 21
+        '-74' r 21
+        '-77' r 21
+        '-90' r 21
+
+
+State 52
+        Prior States: 31
+
+        <TK_maior> ::= '-9698' _                                                                        <TK_maior> ::= '-9698' ^
+
+        '-100' r 22
+        '-70' r 22
+        '-74' r 22
+        '-77' r 22
+        '-90' r 22
+
+
+State 53
+        Prior States: 31
+
+        <Compare_Exp> ::= <Add_Exp> <TK_diferente> _ <Compare_Exp>                                      <Compare_Exp> ::= <Add_Exp> <TK_diferente> ^ <Compare_Exp>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <Compare_Exp> g 78
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 54
+        Prior States: 31
+
+        <Compare_Exp> ::= <Add_Exp> <TK_igual> _ <Compare_Exp>                                          <Compare_Exp> ::= <Add_Exp> <TK_igual> ^ <Compare_Exp>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <Compare_Exp> g 79
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 55
+        Prior States: 31
+
+        <Compare_Exp> ::= <Add_Exp> <TK_maior> _ <Compare_Exp>                                          <Compare_Exp> ::= <Add_Exp> <TK_maior> ^ <Compare_Exp>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <Compare_Exp> g 80
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 56
+        Prior States: 31
+
+        <Compare_Exp> ::= <Add_Exp> <TK_maiorigual> _ <Compare_Exp>                                     <Compare_Exp> ::= <Add_Exp> <TK_maiorigual> ^ <Compare_Exp>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <Compare_Exp> g 81
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 57
+        Prior States: 31
+
+        <Compare_Exp> ::= <Add_Exp> <TK_menor> _ <Compare_Exp>                                          <Compare_Exp> ::= <Add_Exp> <TK_menor> ^ <Compare_Exp>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <Compare_Exp> g 82
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 58
+        Prior States: 31
+
+        <Compare_Exp> ::= <Add_Exp> <TK_menorigual> _ <Compare_Exp>                                     <Compare_Exp> ::= <Add_Exp> <TK_menorigual> ^ <Compare_Exp>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <Compare_Exp> g 83
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 59
+        Prior States: 32
+
+        <TK_or> ::= '-103' _                                                                            <TK_or> ::= '-103' ^
+
+        '-100' r 27
+        '-70' r 27
+        '-74' r 27
+        '-77' r 27
+        '-90' r 27
+
+
+State 60
+        Prior States: 32
+
+        <Expression> ::= <And_Exp> <TK_or> _ <Expression>                                               <Expression> ::= <And_Exp> <TK_or> ^ <Expression>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Expression> ::= _ <And_Exp> <TK_or> <Expression>                                               <Expression> ::= ^ <And_Exp> <TK_or> <Expression>
+        <Expression> ::= _ <And_Exp>                                                                    <Expression> ::= ^ <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp> <TK_and> <And_Exp>                                                <And_Exp> ::= ^ <Compare_Exp> <TK_and> <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp>                                                                   <And_Exp> ::= ^ <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <And_Exp> g 32
+        <Compare_Exp> g 33
+        <Expression> g 84
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 61
+        Prior States: 33
+
+        <TK_and> ::= '-102' _                                                                           <TK_and> ::= '-102' ^
+
+        '-100' r 26
+        '-70' r 26
+        '-74' r 26
+        '-77' r 26
+        '-90' r 26
+
+
+State 62
+        Prior States: 33
+
+        <And_Exp> ::= <Compare_Exp> <TK_and> _ <And_Exp>                                                <And_Exp> ::= <Compare_Exp> <TK_and> ^ <And_Exp>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <And_Exp> ::= _ <Compare_Exp> <TK_and> <And_Exp>                                                <And_Exp> ::= ^ <Compare_Exp> <TK_and> <And_Exp>
+        <And_Exp> ::= _ <Compare_Exp>                                                                   <And_Exp> ::= ^ <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_igual> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_igual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_diferente> <Compare_Exp>                                      <Compare_Exp> ::= ^ <Add_Exp> <TK_diferente> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maior> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_maior> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_maiorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_maiorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menor> <Compare_Exp>                                          <Compare_Exp> ::= ^ <Add_Exp> <TK_menor> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp> <TK_menorigual> <Compare_Exp>                                     <Compare_Exp> ::= ^ <Add_Exp> <TK_menorigual> <Compare_Exp>
+        <Compare_Exp> ::= _ <Add_Exp>                                                                   <Compare_Exp> ::= ^ <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 31
+        <And_Exp> g 85
+        <Compare_Exp> g 33
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 63
+        Prior States: 34
+
+        <TK_faire> ::= '-20' _                                                                          <TK_faire> ::= '-20' ^
+
+        '-16' r 4
+        '-31' r 4
+        '-38' r 4
+        '-43' r 4
+        '-45' r 4
+        '-67' r 4
+        '-7' r 4
+        '-77' r 4
+
+
+State 64
+        Prior States: 34
+
+        <Afirmacao> ::= <TK_pendant> <Expression> <TK_faire> _ <Linhas> <TK_paire>                      <Afirmacao> ::= <TK_pendant> <Expression> <TK_faire> ^ <Linhas> <TK_paire>
+        <TK_si> ::= _ '-7'                                                                              <TK_si> ::= ^ '-7'
+        <TK_pendant> ::= _ '-16'                                                                        <TK_pendant> ::= ^ '-16'
+        <TK_ensemble> ::= _ '-31'                                                                       <TK_ensemble> ::= ^ '-31'
+        <TK_flottant> ::= _ '-38'                                                                       <TK_flottant> ::= ^ '-38'
+        <TK_lettre> ::= _ '-43'                                                                         <TK_lettre> ::= ^ '-43'
+        <TK_mat> ::= _ '-45'                                                                            <TK_mat> ::= ^ '-45'
+        <TK_retour> ::= _ '-67'                                                                         <TK_retour> ::= ^ '-67'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <Linhas> ::= _ <Afirmacao> <TK_comentario> <Linhas>                                             <Linhas> ::= ^ <Afirmacao> <TK_comentario> <Linhas>
+        <Linhas> ::= _ <Afirmacao> <TK_comentario>                                                      <Linhas> ::= ^ <Afirmacao> <TK_comentario>
+        <Afirmacao> ::= _ <TK_id> <TK_doispontos> <Expression>                                          <Afirmacao> ::= ^ <TK_id> <TK_doispontos> <Expression>
+        <Afirmacao> ::= _ <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire>                            <Afirmacao> ::= ^ <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>        <Afirmacao> ::= ^ <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire>                      <Afirmacao> ::= ^ <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_ensemble> <TK_id>                                                         <Afirmacao> ::= ^ <TK_ensemble> <TK_id>
+        <Afirmacao> ::= _ <TK_flottant> <TK_id>                                                         <Afirmacao> ::= ^ <TK_flottant> <TK_id>
+        <Afirmacao> ::= _ <TK_lettre> <TK_id>                                                           <Afirmacao> ::= ^ <TK_lettre> <TK_id>
+        <Afirmacao> ::= _ <TK_mat> <TK_id>                                                              <Afirmacao> ::= ^ <TK_mat> <TK_id>
+        <Afirmacao> ::= _ <TK_retour>                                                                   <Afirmacao> ::= ^ <TK_retour>
+        <Afirmacao> ::= _ <TK_retour> <Expression>                                                      <Afirmacao> ::= ^ <TK_retour> <Expression>
+
+        '-16' s 1
+        '-31' s 2
+        '-38' s 3
+        '-43' s 4
+        '-45' s 5
+        '-67' s 6
+        '-7' s 7
+        '-77' s 8
+        <Afirmacao> g 9
+        <Linhas> g 86
+        <TK_ensemble> g 11
+        <TK_flottant> g 12
+        <TK_id> g 13
+        <TK_lettre> g 14
+        <TK_mat> g 15
+        <TK_pendant> g 16
+        <TK_retour> g 17
+        <TK_si> g 18
+
+
+State 65
+        Prior States: 35
+
+        <TK_mais> ::= '-80' _                                                                           <TK_mais> ::= '-80' ^
+
+        '-100' r 16
+        '-70' r 16
+        '-74' r 16
+        '-77' r 16
+        '-90' r 16
+
+
+State 66
+        Prior States: 35
+
+        <Add_Exp> ::= <Mult_Exp> <TK_mais> _ <Add_Exp>                                                  <Add_Exp> ::= <Mult_Exp> <TK_mais> ^ <Add_Exp>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 87
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 67
+        Prior States: 35
+
+        <Add_Exp> ::= <Mult_Exp> <TK_menos> _ <Add_Exp>                                                 <Add_Exp> ::= <Mult_Exp> <TK_menos> ^ <Add_Exp>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Add_Exp> ::= _ <Mult_Exp> <TK_mais> <Add_Exp>                                                  <Add_Exp> ::= ^ <Mult_Exp> <TK_mais> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp> <TK_menos> <Add_Exp>                                                 <Add_Exp> ::= ^ <Mult_Exp> <TK_menos> <Add_Exp>
+        <Add_Exp> ::= _ <Mult_Exp>                                                                      <Add_Exp> ::= ^ <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Add_Exp> g 88
+        <Mult_Exp> g 35
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 68
+        Prior States: 36
+
+        <TK_vezes> ::= '-78' _                                                                          <TK_vezes> ::= '-78' ^
+
+        '-100' r 14
+        '-70' r 14
+        '-74' r 14
+        '-77' r 14
+        '-90' r 14
+
+
+State 69
+        Prior States: 36
+
+        <TK_div> ::= '-79104' _                                                                         <TK_div> ::= '-79104' ^
+
+        '-100' r 15
+        '-70' r 15
+        '-74' r 15
+        '-77' r 15
+        '-90' r 15
+
+
+State 70
+        Prior States: 36
+
+        <TK_resto> ::= '-94' _                                                                          <TK_resto> ::= '-94' ^
+
+        '-100' r 20
+        '-70' r 20
+        '-74' r 20
+        '-77' r 20
+        '-90' r 20
+
+
+State 71
+        Prior States: 36
+
+        <Mult_Exp> ::= <Negate_Exp> <TK_div> _ <Mult_Exp>                                               <Mult_Exp> ::= <Negate_Exp> <TK_div> ^ <Mult_Exp>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Mult_Exp> g 89
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 72
+        Prior States: 36
+
+        <Mult_Exp> ::= <Negate_Exp> <TK_resto> _ <Mult_Exp>                                             <Mult_Exp> ::= <Negate_Exp> <TK_resto> ^ <Mult_Exp>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Mult_Exp> g 90
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 73
+        Prior States: 36
+
+        <Mult_Exp> ::= <Negate_Exp> <TK_vezes> _ <Mult_Exp>                                             <Mult_Exp> ::= <Negate_Exp> <TK_vezes> ^ <Mult_Exp>
+        <TK_true> ::= _ '-70'                                                                           <TK_true> ::= ^ '-70'
+        <TK_nalse> ::= _ '-74'                                                                          <TK_nalse> ::= ^ '-74'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <TK_menos> ::= _ '-90'                                                                          <TK_menos> ::= ^ '-90'
+        <TK_abreparen> ::= _ '-100'                                                                     <TK_abreparen> ::= ^ '-100'
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_vezes> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_vezes> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_div> <Mult_Exp>                                               <Mult_Exp> ::= ^ <Negate_Exp> <TK_div> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp> <TK_resto> <Mult_Exp>                                             <Mult_Exp> ::= ^ <Negate_Exp> <TK_resto> <Mult_Exp>
+        <Mult_Exp> ::= _ <Negate_Exp>                                                                   <Mult_Exp> ::= ^ <Negate_Exp>
+        <Negate_Exp> ::= _ <TK_menos> <Value>                                                           <Negate_Exp> ::= ^ <TK_menos> <Value>
+        <Negate_Exp> ::= _ <Value>                                                                      <Negate_Exp> ::= ^ <Value>
+        <Value> ::= _ <TK_abreparen> <Expression> <TK_fechaparen>                                       <Value> ::= ^ <TK_abreparen> <Expression> <TK_fechaparen>
+        <Value> ::= _ <TK_id>                                                                           <Value> ::= ^ <TK_id>
+        <Value> ::= _ <TK_true>                                                                         <Value> ::= ^ <TK_true>
+        <Value> ::= _ <TK_nalse>                                                                        <Value> ::= ^ <TK_nalse>
+
+        '-100' s 27
+        '-70' s 28
+        '-74' s 29
+        '-77' s 8
+        '-90' s 30
+        <Mult_Exp> g 91
+        <Negate_Exp> g 36
+        <TK_abreparen> g 37
+        <TK_id> g 38
+        <TK_menos> g 39
+        <TK_nalse> g 40
+        <TK_true> g 41
+        <Value> g 42
+
+
+State 74
+        Prior States: 37
+
+        <Value> ::= <TK_abreparen> <Expression> _ <TK_fechaparen>                                       <Value> ::= <TK_abreparen> <Expression> ^ <TK_fechaparen>
+        <TK_fechaparen> ::= _ '-101'                                                                    <TK_fechaparen> ::= ^ '-101'
+
+        '-101' s 92
+        <TK_fechaparen> g 93
+
+
+State 75
+        Prior States: 39
+
+        <Negate_Exp> ::= <TK_menos> <Value> _                                                           <Negate_Exp> ::= <TK_menos> <Value> ^
+
+        '-101' r 61
+        '-102' r 61
+        '-103' r 61
+        '-105' r 61
+        '-106' r 61
+        '-107' r 61
+        '-20' r 61
+        '-6' r 61
+        '-78' r 61
+        '-79104' r 61
+        '-80' r 61
+        '-90' r 61
+        '-91' r 61
+        '-93' r 61
+        '-94' r 61
+        '-9597' r 61
+        '-9698' r 61
+
+
+State 76
+        Prior States: 44
+
+        <TK_puis> ::= '-6' _                                                                            <TK_puis> ::= '-6' ^
+
+        '-16' r 1
+        '-31' r 1
+        '-38' r 1
+        '-43' r 1
+        '-45' r 1
+        '-67' r 1
+        '-7' r 1
+        '-77' r 1
+
+
+State 77
+        Prior States: 44
+
+        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> _ <Linhas> <TK_paire>                            <Afirmacao> ::= <TK_si> <Expression> <TK_puis> ^ <Linhas> <TK_paire>
+        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> _ <Linhas> <TK_sinon> <Linhas> <TK_paire>        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> ^ <Linhas> <TK_sinon> <Linhas> <TK_paire>
+        <TK_si> ::= _ '-7'                                                                              <TK_si> ::= ^ '-7'
+        <TK_pendant> ::= _ '-16'                                                                        <TK_pendant> ::= ^ '-16'
+        <TK_ensemble> ::= _ '-31'                                                                       <TK_ensemble> ::= ^ '-31'
+        <TK_flottant> ::= _ '-38'                                                                       <TK_flottant> ::= ^ '-38'
+        <TK_lettre> ::= _ '-43'                                                                         <TK_lettre> ::= ^ '-43'
+        <TK_mat> ::= _ '-45'                                                                            <TK_mat> ::= ^ '-45'
+        <TK_retour> ::= _ '-67'                                                                         <TK_retour> ::= ^ '-67'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <Linhas> ::= _ <Afirmacao> <TK_comentario> <Linhas>                                             <Linhas> ::= ^ <Afirmacao> <TK_comentario> <Linhas>
+        <Linhas> ::= _ <Afirmacao> <TK_comentario>                                                      <Linhas> ::= ^ <Afirmacao> <TK_comentario>
+        <Afirmacao> ::= _ <TK_id> <TK_doispontos> <Expression>                                          <Afirmacao> ::= ^ <TK_id> <TK_doispontos> <Expression>
+        <Afirmacao> ::= _ <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire>                            <Afirmacao> ::= ^ <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>        <Afirmacao> ::= ^ <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire>                      <Afirmacao> ::= ^ <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_ensemble> <TK_id>                                                         <Afirmacao> ::= ^ <TK_ensemble> <TK_id>
+        <Afirmacao> ::= _ <TK_flottant> <TK_id>                                                         <Afirmacao> ::= ^ <TK_flottant> <TK_id>
+        <Afirmacao> ::= _ <TK_lettre> <TK_id>                                                           <Afirmacao> ::= ^ <TK_lettre> <TK_id>
+        <Afirmacao> ::= _ <TK_mat> <TK_id>                                                              <Afirmacao> ::= ^ <TK_mat> <TK_id>
+        <Afirmacao> ::= _ <TK_retour>                                                                   <Afirmacao> ::= ^ <TK_retour>
+        <Afirmacao> ::= _ <TK_retour> <Expression>                                                      <Afirmacao> ::= ^ <TK_retour> <Expression>
+
+        '-16' s 1
+        '-31' s 2
+        '-38' s 3
+        '-43' s 4
+        '-45' s 5
+        '-67' s 6
+        '-7' s 7
+        '-77' s 8
+        <Afirmacao> g 9
+        <Linhas> g 94
+        <TK_ensemble> g 11
+        <TK_flottant> g 12
+        <TK_id> g 13
+        <TK_lettre> g 14
+        <TK_mat> g 15
+        <TK_pendant> g 16
+        <TK_retour> g 17
+        <TK_si> g 18
+
+
+State 78
+        Prior States: 53
+
+        <Compare_Exp> ::= <Add_Exp> <TK_diferente> <Compare_Exp> _                                      <Compare_Exp> ::= <Add_Exp> <TK_diferente> <Compare_Exp> ^
+
+        '-101' r 48
+        '-102' r 48
+        '-103' r 48
+        '-105' r 48
+        '-20' r 48
+        '-6' r 48
+
+
+State 79
+        Prior States: 54
+
+        <Compare_Exp> ::= <Add_Exp> <TK_igual> <Compare_Exp> _                                          <Compare_Exp> ::= <Add_Exp> <TK_igual> <Compare_Exp> ^
+
+        '-101' r 47
+        '-102' r 47
+        '-103' r 47
+        '-105' r 47
+        '-20' r 47
+        '-6' r 47
+
+
+State 80
+        Prior States: 55
+
+        <Compare_Exp> ::= <Add_Exp> <TK_maior> <Compare_Exp> _                                          <Compare_Exp> ::= <Add_Exp> <TK_maior> <Compare_Exp> ^
+
+        '-101' r 49
+        '-102' r 49
+        '-103' r 49
+        '-105' r 49
+        '-20' r 49
+        '-6' r 49
+
+
+State 81
+        Prior States: 56
+
+        <Compare_Exp> ::= <Add_Exp> <TK_maiorigual> <Compare_Exp> _                                     <Compare_Exp> ::= <Add_Exp> <TK_maiorigual> <Compare_Exp> ^
+
+        '-101' r 50
+        '-102' r 50
+        '-103' r 50
+        '-105' r 50
+        '-20' r 50
+        '-6' r 50
+
+
+State 82
+        Prior States: 57
+
+        <Compare_Exp> ::= <Add_Exp> <TK_menor> <Compare_Exp> _                                          <Compare_Exp> ::= <Add_Exp> <TK_menor> <Compare_Exp> ^
+
+        '-101' r 51
+        '-102' r 51
+        '-103' r 51
+        '-105' r 51
+        '-20' r 51
+        '-6' r 51
+
+
+State 83
+        Prior States: 58
+
+        <Compare_Exp> ::= <Add_Exp> <TK_menorigual> <Compare_Exp> _                                     <Compare_Exp> ::= <Add_Exp> <TK_menorigual> <Compare_Exp> ^
+
+        '-101' r 52
+        '-102' r 52
+        '-103' r 52
+        '-105' r 52
+        '-20' r 52
+        '-6' r 52
+
+
+State 84
+        Prior States: 60
+
+        <Expression> ::= <And_Exp> <TK_or> <Expression> _                                               <Expression> ::= <And_Exp> <TK_or> <Expression> ^
+
+        '-101' r 43
+        '-105' r 43
+        '-20' r 43
+        '-6' r 43
+
+
+State 85
+        Prior States: 62
+
+        <And_Exp> ::= <Compare_Exp> <TK_and> <And_Exp> _                                                <And_Exp> ::= <Compare_Exp> <TK_and> <And_Exp> ^
+
+        '-101' r 45
+        '-103' r 45
+        '-105' r 45
+        '-20' r 45
+        '-6' r 45
+
+
+State 86
+        Prior States: 64
+
+        <Afirmacao> ::= <TK_pendant> <Expression> <TK_faire> <Linhas> _ <TK_paire>                      <Afirmacao> ::= <TK_pendant> <Expression> <TK_faire> <Linhas> ^ <TK_paire>
+        <TK_paire> ::= _ '-24'                                                                          <TK_paire> ::= ^ '-24'
+
+        '-24' s 95
+        <TK_paire> g 96
+
+
+State 87
+        Prior States: 66
+
+        <Add_Exp> ::= <Mult_Exp> <TK_mais> <Add_Exp> _                                                  <Add_Exp> ::= <Mult_Exp> <TK_mais> <Add_Exp> ^
+
+        '-101' r 54
+        '-102' r 54
+        '-103' r 54
+        '-105' r 54
+        '-106' r 54
+        '-107' r 54
+        '-20' r 54
+        '-6' r 54
+        '-91' r 54
+        '-93' r 54
+        '-9597' r 54
+        '-9698' r 54
+
+
+State 88
+        Prior States: 67
+
+        <Add_Exp> ::= <Mult_Exp> <TK_menos> <Add_Exp> _                                                 <Add_Exp> ::= <Mult_Exp> <TK_menos> <Add_Exp> ^
+
+        '-101' r 55
+        '-102' r 55
+        '-103' r 55
+        '-105' r 55
+        '-106' r 55
+        '-107' r 55
+        '-20' r 55
+        '-6' r 55
+        '-91' r 55
+        '-93' r 55
+        '-9597' r 55
+        '-9698' r 55
+
+
+State 89
+        Prior States: 71
+
+        <Mult_Exp> ::= <Negate_Exp> <TK_div> <Mult_Exp> _                                               <Mult_Exp> ::= <Negate_Exp> <TK_div> <Mult_Exp> ^
+
+        '-101' r 58
+        '-102' r 58
+        '-103' r 58
+        '-105' r 58
+        '-106' r 58
+        '-107' r 58
+        '-20' r 58
+        '-6' r 58
+        '-80' r 58
+        '-90' r 58
+        '-91' r 58
+        '-93' r 58
+        '-9597' r 58
+        '-9698' r 58
+
+
+State 90
+        Prior States: 72
+
+        <Mult_Exp> ::= <Negate_Exp> <TK_resto> <Mult_Exp> _                                             <Mult_Exp> ::= <Negate_Exp> <TK_resto> <Mult_Exp> ^
+
+        '-101' r 59
+        '-102' r 59
+        '-103' r 59
+        '-105' r 59
+        '-106' r 59
+        '-107' r 59
+        '-20' r 59
+        '-6' r 59
+        '-80' r 59
+        '-90' r 59
+        '-91' r 59
+        '-93' r 59
+        '-9597' r 59
+        '-9698' r 59
+
+
+State 91
+        Prior States: 73
+
+        <Mult_Exp> ::= <Negate_Exp> <TK_vezes> <Mult_Exp> _                                             <Mult_Exp> ::= <Negate_Exp> <TK_vezes> <Mult_Exp> ^
+
+        '-101' r 57
+        '-102' r 57
+        '-103' r 57
+        '-105' r 57
+        '-106' r 57
+        '-107' r 57
+        '-20' r 57
+        '-6' r 57
+        '-80' r 57
+        '-90' r 57
+        '-91' r 57
+        '-93' r 57
+        '-9597' r 57
+        '-9698' r 57
+
+
+State 92
+        Prior States: 74
+
+        <TK_fechaparen> ::= '-101' _                                                                    <TK_fechaparen> ::= '-101' ^
+
+        '-101' r 25
+        '-102' r 25
+        '-103' r 25
+        '-105' r 25
+        '-106' r 25
+        '-107' r 25
+        '-20' r 25
+        '-6' r 25
+        '-78' r 25
+        '-79104' r 25
+        '-80' r 25
+        '-90' r 25
+        '-91' r 25
+        '-93' r 25
+        '-94' r 25
+        '-9597' r 25
+        '-9698' r 25
+
+
+State 93
+        Prior States: 74
+
+        <Value> ::= <TK_abreparen> <Expression> <TK_fechaparen> _                                       <Value> ::= <TK_abreparen> <Expression> <TK_fechaparen> ^
+
+        '-101' r 63
+        '-102' r 63
+        '-103' r 63
+        '-105' r 63
+        '-106' r 63
+        '-107' r 63
+        '-20' r 63
+        '-6' r 63
+        '-78' r 63
+        '-79104' r 63
+        '-80' r 63
+        '-90' r 63
+        '-91' r 63
+        '-93' r 63
+        '-94' r 63
+        '-9597' r 63
+        '-9698' r 63
+
+
+State 94
+        Prior States: 77
+
+        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> _ <TK_paire>                            <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> ^ <TK_paire>
+        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> _ <TK_sinon> <Linhas> <TK_paire>        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> ^ <TK_sinon> <Linhas> <TK_paire>
+        <TK_sinon> ::= _ '-10'                                                                          <TK_sinon> ::= ^ '-10'
+        <TK_paire> ::= _ '-24'                                                                          <TK_paire> ::= ^ '-24'
+
+        '-10' s 97
+        '-24' s 95
+        <TK_paire> g 98
+        <TK_sinon> g 99
+
+
+State 95
+        Prior States: 86, 94, 100
+
+        <TK_paire> ::= '-24' _                                                                          <TK_paire> ::= '-24' ^
+
+        '-105' r 5
+
+
+State 96
+        Prior States: 86
+
+        <Afirmacao> ::= <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire> _                      <Afirmacao> ::= <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire> ^
+
+        '-105' r 36
+
+
+State 97
+        Prior States: 94
+
+        <TK_sinon> ::= '-10' _                                                                          <TK_sinon> ::= '-10' ^
+
+        '-16' r 2
+        '-31' r 2
+        '-38' r 2
+        '-43' r 2
+        '-45' r 2
+        '-67' r 2
+        '-7' r 2
+        '-77' r 2
+
+
+State 98
+        Prior States: 94
+
+        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire> _                            <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire> ^
+
+        '-105' r 34
+
+
+State 99
+        Prior States: 94
+
+        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> _ <Linhas> <TK_paire>        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> ^ <Linhas> <TK_paire>
+        <TK_si> ::= _ '-7'                                                                              <TK_si> ::= ^ '-7'
+        <TK_pendant> ::= _ '-16'                                                                        <TK_pendant> ::= ^ '-16'
+        <TK_ensemble> ::= _ '-31'                                                                       <TK_ensemble> ::= ^ '-31'
+        <TK_flottant> ::= _ '-38'                                                                       <TK_flottant> ::= ^ '-38'
+        <TK_lettre> ::= _ '-43'                                                                         <TK_lettre> ::= ^ '-43'
+        <TK_mat> ::= _ '-45'                                                                            <TK_mat> ::= ^ '-45'
+        <TK_retour> ::= _ '-67'                                                                         <TK_retour> ::= ^ '-67'
+        <TK_id> ::= _ '-77'                                                                             <TK_id> ::= ^ '-77'
+        <Linhas> ::= _ <Afirmacao> <TK_comentario> <Linhas>                                             <Linhas> ::= ^ <Afirmacao> <TK_comentario> <Linhas>
+        <Linhas> ::= _ <Afirmacao> <TK_comentario>                                                      <Linhas> ::= ^ <Afirmacao> <TK_comentario>
+        <Afirmacao> ::= _ <TK_id> <TK_doispontos> <Expression>                                          <Afirmacao> ::= ^ <TK_id> <TK_doispontos> <Expression>
+        <Afirmacao> ::= _ <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire>                            <Afirmacao> ::= ^ <TK_si> <Expression> <TK_puis> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>        <Afirmacao> ::= ^ <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire>                      <Afirmacao> ::= ^ <TK_pendant> <Expression> <TK_faire> <Linhas> <TK_paire>
+        <Afirmacao> ::= _ <TK_ensemble> <TK_id>                                                         <Afirmacao> ::= ^ <TK_ensemble> <TK_id>
+        <Afirmacao> ::= _ <TK_flottant> <TK_id>                                                         <Afirmacao> ::= ^ <TK_flottant> <TK_id>
+        <Afirmacao> ::= _ <TK_lettre> <TK_id>                                                           <Afirmacao> ::= ^ <TK_lettre> <TK_id>
+        <Afirmacao> ::= _ <TK_mat> <TK_id>                                                              <Afirmacao> ::= ^ <TK_mat> <TK_id>
+        <Afirmacao> ::= _ <TK_retour>                                                                   <Afirmacao> ::= ^ <TK_retour>
+        <Afirmacao> ::= _ <TK_retour> <Expression>                                                      <Afirmacao> ::= ^ <TK_retour> <Expression>
+
+        '-16' s 1
+        '-31' s 2
+        '-38' s 3
+        '-43' s 4
+        '-45' s 5
+        '-67' s 6
+        '-7' s 7
+        '-77' s 8
+        <Afirmacao> g 9
+        <Linhas> g 100
+        <TK_ensemble> g 11
+        <TK_flottant> g 12
+        <TK_id> g 13
+        <TK_lettre> g 14
+        <TK_mat> g 15
+        <TK_pendant> g 16
+        <TK_retour> g 17
+        <TK_si> g 18
+
+
+State 100
+        Prior States: 99
+
+        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> _ <TK_paire>        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> ^ <TK_paire>
+        <TK_paire> ::= _ '-24'                                                                          <TK_paire> ::= ^ '-24'
+
+        '-24' s 95
+        <TK_paire> g 101
+
+
+State 101
+        Prior States: 100
+
+        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire> _        <Afirmacao> ::= <TK_si> <Expression> <TK_puis> <Linhas> <TK_sinon> <Linhas> <TK_paire> ^
+
+        '-105' r 35
+
+
+
+
+========================================
+System Log
+========================================
+
+Grammar        Success           The grammar was successfully analyzed
+LALR States    Success           LALR Table was succesfully created
+DFA States     Success           The DFA State Table was successfully created
+System         Success           The grammar was successfully analyzed and tables were created.
+
+

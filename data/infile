@@ -1,1 +1,25 @@
-si puis sinon pendant faire paire ensemble flottant lettre mat coprendre principale retour true nalse $aaa $cba * / + - = != % < > <= >= : ( ) ^ v //
+$aaa : ( ( $bbb + $ccc ) * $aaa - $bbb / $aaa ) //
+
+ensemble $aaa //
+flottant $aaa //
+lettre $aaa //
+mat $aaa //
+
+si ( $aaa < $ccc ) v ( nalse != true ) puis
+    $aaa : $aaa //
+    $bba : $caa //
+paire //
+
+si $aaa >= $ccc puis
+    $aaa : $aaa //
+    $bba : $caa //
+sinon
+    $bba : $cba //
+paire //
+
+pendant $aaa faire
+    $bba : true //
+    retour nalse //
+paire //
+
+$aaa : $bbb //

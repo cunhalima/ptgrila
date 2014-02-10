@@ -39,7 +39,7 @@ OBJS=$(MAINTEST) $(MODULES)
 EXE=$(BDIR)/ptg
 TARBALL=trabalho.tar.gz
 
-.PHONY: all clean run val tar test
+.PHONY: all clean run val tar test syn test2
 
 all: $(EXE)
 
@@ -79,3 +79,10 @@ $(TARBALL):
 
 test: $(EXE)
 	@./$(EXE) < data/infile
+
+test2: $(EXE)
+	@./$(EXE) < data/dois
+
+syn: $(EXE)
+	@./$(EXE) < data/infile | ../ptgrila2/bin/ptg
+
